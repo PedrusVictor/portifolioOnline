@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% block body %}
+<div class="container">
+  <div class="row row-cols-5">
+    
+        {% for proj in user.projects %}
+        <div class="col item">
+      
+          <div class="card">
+            
+            <button class="btn btn-secondary"><a href="{{ url_for('editproject',id=proj.id) }}">edit</a></button> 
+            <a href={{proj.link}} >
+            
+           
+            <img src="{{proj.img.replace('./','/')}}" class="card-img-top" alt="...">
+            
+            <div class="card-body">
+              <h5 class="card-title">{{proj.name}}</h5>
+              
+             
+            </div>
+            </a>
+         </div>
+        
+      </div>
+        {% endfor %}  
+      
+        {% if session.get("user") %}
+      <div class="col item">
+        <div class="card">
+          <a data-bs-toggle="modal" data-bs-target="#cadastroTutorial" data-bs-whatever="@mdo">
+          
+          <img src="/static/img/plus.png" class="card-img-top" alt="...">
+          
+          <div class="card-body">
+            <h5  class="card-title">Card title</h5>
+            
+           
+          </div>
+        </a>
+        </div>
+      </div>
+      {% endif %}
+  </div>
+  <div class="modal fade" id="cadastroTutorial" tabindex="-1" aria-labelledby="cadastroTutorialLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="cadastroTutorialLabel">Adicionar projeto</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form method="POST" action="{{url_for('addProject') }}" enctype="multipart/form-data">
+            <div class="mb-3">
+              <label for="recipient-name" class="col-form-label">Nome projeto:</label>
+              <input name="inputname" type="text" class="form-control" id="recipient-name">
+            </div>
+            <div class="mb-3">
+              <label for="image-url" class="col-form-label">Imagem:</label>
+              <input name="inputimg" type="file" class="form-control" id="image-url">
+            </div>
+            
+            <div class="mb-3">
+              <label for="link" class="col-form-label">link:</label>
+              <input name="inputlink" type="text" class="form-control" id="link">
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary" >adicionar</button>
+            </div>
+          </form>
+        </div>
+       
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

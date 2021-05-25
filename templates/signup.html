@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block body %}
+<div class="container">
+    <div class="row g-3 align-items-center">
+        
+        <div class="col-md-3">
+            <h3 class="title">Sign Up</h3>
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            <div >
+                {{ messages[0] }}. Go to <a href="{{ url_for('auth.login') }}">login page</a>.
+            </div>
+            {% endif %}
+            {% endwith %}
+            <form method="POST" action="/signup">
+               
+    
+                <div class="mb-3">
+                    <div class="control">
+                        <input class="form-control"  type="text" name="name" placeholder="Name" autofocus>
+                    </div>
+                </div>
+    
+                <div class="mb-3">
+                    <div class="control">
+                        <input class="form-control"  type="password" name="password" placeholder="Password">
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <div class="control">
+                        <input class="form-control"  type="text" name="img" placeholder="img">
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <div class="control">
+                        <input class="form-control"  type="text" name="bio" placeholder="Bio">
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <div class="mb-3">
+                        <input class="form-control" type="text" name="cursos" placeholder="Cursos" >
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <div class="control">
+                        <input class="form-control" type="text" name="skills" placeholder="Skills" >
+                    </div>
+                </div>
+    
+                <button class="btn btn-primary">Sign Up</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

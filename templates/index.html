@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+
+<div class="container">
+  <div class="row">
+
+    <div class="p-2 flex-shrink-1 bd-highlight col-3">
+      <div class="card" style="width: 18rem;">
+        <img src="https://avatars.githubusercontent.com/u/48894373?v=4" class="card-img-top" alt="...">
+        <div class="card-body">
+
+          <h5 class="card-title"> {{user['name']}}  </h5>
+          <p class="card-text">{{user['desc']}}</p>
+         
+        </div>
+      </div>
+   </div>
+     <div class="p-2 flex-shrink-1 bd-highlight col-9" >
+      <div class="container info">
+        <table class="table h-100">
+          <thead>
+            <tr>
+              <th scope="col">Formação</th>
+              <th scope="col">Habilidades</th>
+              
+            </tr>
+          </thead>
+          <tbody>
+            
+            <tr >
+              <td>
+                <a href="#">
+                <i class="fa fa-graduation-cap icon" style="font-size: 50px;" data-bs-toggle="offcanvas" data-bs-target="#offcanvasLeft" aria-controls="offcanvasLeft">
+                </i>
+                
+              </a>
+            </td>
+              
+              <td>
+                <a href="#">
+                  <i class="fa fa-book icon" style="font-size: 50px;" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+                  </i>
+                  
+                </a>
+              </td>
+              <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasLeft" aria-labelledby="offcanvasLeftLabel">
+          <div class="offcanvas-header">
+            <h5 id="offcanvasLeftLabel">Formação</h5>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+          </div>
+            <div class="offcanvas-body ">
+              <ul class="list-group dados cursos" >
+                <li class="list-group-item active" ><b>Formação</b></li>
+                {% for curso in user.cursos %}
+                <li class="list-group-item">{{curso}}</li>
+                {% endfor %}
+                
+                  
+              </ul>
+            </div>
+          </div>
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+          <div class="offcanvas-header">
+            <h5 id="offcanvasRightLabel">Habilidades</h5>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body ">
+            <ul class="list-group dados hab">
+              <li class="list-group-item active" ><b>Habilidades</b></li>
+              {% for skill in user.skills %}
+                <li class="list-group-item">{{skill}}</li>
+                {% endfor %}
+             
+            </ul>
+          </div>
+        
+      </div>
+            </tr>
+          </tbody>
+          
+        </table>
+      </div>
+      
+       
+       
+     </div>
+  </div>
+  
+</div>
+
+{% endblock %}
+
